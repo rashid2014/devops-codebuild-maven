@@ -2,7 +2,8 @@ version: 0.2
 
 env:
   variables:
-    JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
+    JAVA_HOME: "/usr/lib/jvm/java-1.8.0"
+    PATH: "$JAVA_HOME/bin:$PATH"
   # parameter-store:
   #   LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
 
@@ -34,7 +35,7 @@ phases:
       - echo Build completed on `date`
 
 reports:
-  arn:aws:codebuild:your-region:your-aws-account-id:report-group/report-group-name-1:
+  arn:aws:codebuild:ca-central-1:911167917923:report-group/report-group-name-1:
     files:
       - "**/*"
     base-directory: 'target/tests/reports'
