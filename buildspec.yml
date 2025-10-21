@@ -1,9 +1,9 @@
 version: 0.2
 
-env:
-  variables:
-    JAVA_HOME: "/usr/lib/jvm/java-17-amazon-corretto"
-    PATH: "/usr/lib/jvm/java-17-amazon-corretto/bin:$PATH"
+# env:
+#   variables:
+#     JAVA_HOME: "/usr/lib/jvm/java-17-amazon-corretto"
+#     PATH: "/usr/lib/jvm/java-17-amazon-corretto/bin:$PATH"
   # parameter-store:
   #   LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
 
@@ -11,9 +11,6 @@ phases:
   install:
     commands:
       - echo Entered the install phase...
-      - apt-get update -y
-      - apt-get install -y maven
-    finally:
       - echo This always runs even if the update or install command fails 
   pre_build:
     commands:
@@ -26,7 +23,7 @@ phases:
       - echo Entered the build phase...
       - echo Build started on `date`
       - cd my-webapp
-      - mvn install
+      - mvn clean install
     finally:
       - echo This always runs even if the install command fails
   post_build:
