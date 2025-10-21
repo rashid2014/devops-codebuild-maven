@@ -11,8 +11,8 @@ phases:
   install:
     commands:
       - echo Entered the install phase...
-      - apt-get update -y
-      - apt-get install -y maven
+      - yum update -y
+      - yum install -y maven
     finally:
       - echo This always runs even if the update or install command fails 
   pre_build:
@@ -26,7 +26,7 @@ phases:
       - echo Entered the build phase...
       - echo Build started on `date`
       - cd my-webapp
-      - mvn install
+      - mvn clean install
     finally:
       - echo This always runs even if the install command fails
   post_build:
